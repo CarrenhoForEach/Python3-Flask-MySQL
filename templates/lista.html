@@ -1,0 +1,27 @@
+{% extends "template.html" %}
+{% block Conteudo %}
+        <a class="btn btn-success" href="{{url_for('novo')}}">Novo Jogo</a>
+        <table class="table table-striped table-responsive table-bordered">
+            <thead class="thead-default">
+                <tr>
+                    <th>Nome</th>
+                    <th>Categoria</th>
+                    <th>Console</th>
+                    <th>Editar</th>
+                    <th>Deletar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for game in jogos %}
+                <tr>
+                    <td>{{ game.nome|upper }}</td>
+                    <td>{{ game.categoria|upper }}</td>
+                    <td>{{ game.console|upper }}</td>
+                    <td><a class="btn btn-primary" href="{{ url_for('editar', id = game.id) }}">Editar</a></td>
+                    <td><a class="btn btn-warning" href="{{ url_for('deletar', id = game.id) }}">Deletar</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+{% endblock %}
+   
